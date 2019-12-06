@@ -54,7 +54,7 @@ export default class extends Element {
   _getComponent() {
     return class extends React.Component {
       render() {
-        return <a {...this.props}></a>
+      return <a {...this.props}>{this.props.children}</a>
       }
     }
   }

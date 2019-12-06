@@ -9,6 +9,7 @@ import Header from '../../components/header'
 import Footer from '../../components/footer'
 import { Store } from '../../store'
 import Layout from '../../components/layout'
+import GithubWidget from '../../components/github/widget'
 
 const rootStore = new Store()
 
@@ -39,6 +40,7 @@ class App extends React.Component<any, {user: string}> {
             }
           >
           </Layout>
+          <GithubWidget />
         </Provider>
       </DndProvider>
     )
