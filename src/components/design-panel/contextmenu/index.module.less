@@ -1,0 +1,52 @@
+.contextmenu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9;
+}
+
+.menu_panel {
+  min-width: 100px;
+  min-height: 50px;
+  background: #fff;
+  border: 1px solid rgba(90, 90, 90, 0.2);
+  box-shadow: 4px 4px 12px rgba(200, 200, 200, 0.75);
+}
+
+.menu_panel__header {
+  padding: 2px 8px;
+  border-bottom: 1px solid rgba(182, 175, 175, 0.45);
+  white-space: nowrap;
+}
+
+.menu_panel__header__type {
+  vertical-align: middle;
+}
+
+.menu_panel__header__name {
+  display: inline-block;
+  max-width: 100px;
+  padding-left: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: middle;
+}
+
+.menu_panel__body {
+  padding: 4px 0;
+  margin: 0;
+  list-style: none;
+}
+
+.menu_panel__item {
+  padding: 2px 12px;
+  color: #333;
+  font-size: 12px;
+  user-select: none;
+
+  &:hover {
+    color: #fff;
+    background-color: #1890ff;
+  }
+}

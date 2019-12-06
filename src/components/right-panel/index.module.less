@@ -1,0 +1,43 @@
+.panel {
+  height: 100%;
+
+  .title {
+    padding: 8px;
+    border-bottom: 1px solid #f1f1f1;
+    white-space: nowrap;
+    overflow: hidden;
+    user-select: none;
+  }
+
+  .panel_tabs {
+    height: 100%;
+
+    :global {
+      .ant-tabs-content {
+        height: calc(100% - 100px);
+
+        .ant-tabs-tabpane {
+          overflow-y: auto;
+        }
+      }
+    }
+  }
+
+  .controls {
+    padding: 8px;
+  }
+
+  .prop_item {
+    margin-bottom: 2px;
+    padding-right: 4px;
+  }
+
+  :global{
+    .ant-tabs-bar {
+      margin-bottom: 4px;
+    }
+    .ant-tabs .ant-tabs-small-bar .ant-tabs-tab {
+      padding: 8px 4px;
+    }
+  }
+}

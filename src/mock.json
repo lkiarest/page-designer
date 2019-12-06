@@ -1,0 +1,359 @@
+[
+  {
+    "key": "1776956744403937",
+    "type": "plain-text",
+    "props": {
+      "children": "简单布局演示",
+      "label": "普通文本",
+      "style": {
+        "fontSize": "30px",
+        "textAlign": "center",
+        "marginBottom": "0"
+      }
+    },
+    "dataType": "string"
+  },
+  {
+    "key": "4298781291918512",
+    "type": "row",
+    "props": {
+      "align": "middle",
+      "label": "行(栅格)",
+      "style": {}
+    },
+    "dataType": "string",
+    "children": [
+      {
+        "key": "9956395404130711",
+        "type": "col",
+        "props": {
+          "span": 18,
+          "offset": 0,
+          "label": "列(栅格)",
+          "style": {}
+        },
+        "dataType": "string",
+        "children": [
+          {
+            "key": "6409028423875944",
+            "type": "form",
+            "props": {
+              "layout": "horizontal",
+              "labelCol": {
+                "span": 6
+              },
+              "wrapperCol": {
+                "span": 18
+              },
+              "label": "表单",
+              "style": {}
+            },
+            "dataType": "string",
+            "children": [
+              {
+                "key": "8127574242987869",
+                "type": "plain-text",
+                "props": {
+                  "children": "表单",
+                  "label": "普通文本",
+                  "style": {
+                    "textAlign": "center"
+                  }
+                },
+                "dataType": "string"
+              },
+              {
+                "key": "5314832328409442",
+                "type": "input",
+                "props": {
+                  "label": "输入框",
+                  "type": "text",
+                  "placeholder": "请输入",
+                  "style": {
+                    "color": "#333"
+                  }
+                },
+                "name": "username",
+                "dataType": "string"
+              },
+              {
+                "key": "0401086328205258",
+                "type": "radio",
+                "props": {
+                  "label": "单选框",
+                  "options": [
+                    {
+                      "value": 0,
+                      "label": "选项一"
+                    },
+                    {
+                      "value": 1,
+                      "label": "选项二"
+                    },
+                    {
+                      "value": 2,
+                      "label": "选项三"
+                    }
+                  ],
+                  "buttonStyle": "",
+                  "style": {}
+                },
+                "name": "radio1",
+                "dataType": "string"
+              },
+              {
+                "key": "6397080982124510",
+                "type": "select",
+                "props": {
+                  "label": "下拉框",
+                  "options": [
+                    {
+                      "value": 0,
+                      "label": "选项一"
+                    },
+                    {
+                      "value": 1,
+                      "label": "选项二"
+                    },
+                    {
+                      "value": 2,
+                      "label": "选项三"
+                    }
+                  ],
+                  "style": {}
+                },
+                "name": "select1",
+                "dataType": "string"
+              },
+              {
+                "key": "4808061986138541",
+                "type": "switch",
+                "props": {
+                  "label": "开关",
+                  "size": "default",
+                  "style": {}
+                },
+                "name": "switch1",
+                "dataType": "string"
+              },
+              {
+                "key": "7538034164519258",
+                "type": "checkbox",
+                "props": {
+                  "label": "多选框",
+                  "options": [
+                    {
+                      "value": 0,
+                      "label": "选项一"
+                    },
+                    {
+                      "value": 1,
+                      "label": "选项二"
+                    },
+                    {
+                      "value": 2,
+                      "label": "选项三"
+                    }
+                  ],
+                  "style": {}
+                },
+                "name": "checkbox1",
+                "dataType": "string"
+              },
+              {
+                "key": "3090715532919681",
+                "type": "rate",
+                "props": {
+                  "label": "评分",
+                  "count": 5,
+                  "defaultValue": 0,
+                  "allowHalf": false,
+                  "style": {}
+                },
+                "name": "rate1",
+                "dataType": "string"
+              },
+              {
+                "key": "2391648668808612",
+                "type": "textarea",
+                "props": {
+                  "label": "文本域",
+                  "placeholder": "请输入",
+                  "style": {}
+                },
+                "name": "textarea1",
+                "dataType": "string"
+              },
+              {
+                "key": "4648025677912127",
+                "type": "slider",
+                "props": {
+                  "label": "滑动输入条",
+                  "min": 0,
+                  "max": 100,
+                  "step": 1,
+                  "range": false,
+                  "style": {}
+                },
+                "name": "slider1",
+                "dataType": "string"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "9675163511440921",
+        "type": "col",
+        "props": {
+          "span": 5,
+          "offset": 1,
+          "label": "列(栅格)",
+          "className": "gutter-row",
+          "style": {}
+        },
+        "dataType": "string",
+        "children": [
+          {
+            "key": "2818679165513551",
+            "type": "plain-text",
+            "props": {
+              "children": "******************",
+              "label": "普通文本",
+              "style": {}
+            },
+            "dataType": "string"
+          },
+          {
+            "key": "3768555170943659",
+            "type": "button",
+            "props": {
+              "children": "按钮1",
+              "type": "primary",
+              "size": "default",
+              "label": "按钮",
+              "style": {}
+            },
+            "dataType": "string"
+          },
+          {
+            "key": "1388367004234141",
+            "type": "plain-text",
+            "props": {
+              "children": "******************",
+              "label": "普通文本",
+              "style": {}
+            },
+            "dataType": "string"
+          },
+          {
+            "key": "4438789048717182",
+            "type": "pagination",
+            "props": {
+              "label": "分页",
+              "style": {
+                "marginTop": "8px",
+                "marginBottom": "8px"
+              }
+            },
+            "dataType": "string"
+          },
+          {
+            "key": "6815047577054774",
+            "type": "link",
+            "props": {
+              "children": "点击跳转",
+              "href": "#",
+              "target": "_blank",
+              "label": "链接",
+              "style": {}
+            },
+            "dataType": "string"
+          },
+          {
+            "key": "3409099978221872",
+            "type": "plain-text",
+            "props": {
+              "children": "******************",
+              "label": "普通文本",
+              "style": {}
+            },
+            "dataType": "string"
+          },
+          {
+            "key": "7772036219889191",
+            "type": "Icon",
+            "props": {
+              "type": "user",
+              "spin": false,
+              "rotate": 0,
+              "label": "图标",
+              "style": {
+                "fontSize": "20px"
+              }
+            },
+            "dataType": "string"
+          },
+          {
+            "key": "1027353075515638",
+            "type": "Icon",
+            "props": {
+              "type": "smile",
+              "spin": false,
+              "rotate": 0,
+              "label": "图标",
+              "style": {
+                "marginLeft": "8px",
+                "marginRight": "8px"
+              }
+            },
+            "dataType": "string"
+          },
+          {
+            "key": "2975511032094302",
+            "type": "Icon",
+            "props": {
+              "type": "team",
+              "spin": false,
+              "rotate": 0,
+              "label": "图标",
+              "style": {
+                "fontSize": "20px"
+              }
+            },
+            "dataType": "string"
+          },
+          {
+            "key": "3446094779693065",
+            "type": "Icon",
+            "props": {
+              "type": "android",
+              "spin": false,
+              "rotate": 0,
+              "label": "图标",
+              "style": {
+                "marginLeft": "8px",
+                "marginRight": "8px"
+              }
+            },
+            "dataType": "string"
+          },
+          {
+            "key": "1137942118612651",
+            "type": "Icon",
+            "props": {
+              "type": "github",
+              "spin": false,
+              "rotate": 0,
+              "label": "图标",
+              "style": {
+                "fontSize": "20px"
+              }
+            },
+            "dataType": "string"
+          }
+        ]
+      }
+    ]
+  }
+]

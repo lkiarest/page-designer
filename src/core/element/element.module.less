@@ -1,0 +1,61 @@
+@offset: 2px;
+@min-height: 18px;
+
+.page {
+  width: 100%;
+  min-height: 100%;
+  padding: 8px;
+  position: relative;
+
+  :global {
+    .ant-form { /* 解决 ant form 样式无法设置的问题 */
+      position: relative;
+    }
+  }
+}
+
+.box_in_item {
+  min-height: @min-height;
+}
+
+.box_in_container {
+  position: absolute;
+  left: @offset;
+  right: @offset;
+  top: @offset;
+  bottom: @offset;
+  min-height: @min-height;
+  padding: 0;
+}
+
+.opts {
+  position: absolute;
+  // left: 0;
+  top: 0;
+  right: 0;
+  padding: 0 4px;
+  // width: 100px;
+  text-align: right;
+  border: 1px solid rgba(200, 200, 200, 0.8);
+  border-bottom-left-radius: 4px;
+  background: rgba(255, 255, 255, 0.8);
+  pointer-events: none;
+  z-index: 4;
+
+  .btn {
+    padding: 0px 4px;
+    display: inline-block;
+    color: #999;
+    font-size: 12px;
+    cursor: pointer;
+    pointer-events: visible;
+
+    &:hover {
+      color: #a00;
+    }
+  }
+
+  .split {
+    color: #ccc;
+  }
+}
