@@ -43,7 +43,13 @@ class DesignPanel extends React.Component<OwnProps> {
 
     return (
       <div className={styles.panel}>
-        <ElementProvider value={{ mode: RENDER_MODE_DESIGN, onChange: this.onChange }}>
+        <ElementProvider
+          value={{
+            mode: RENDER_MODE_DESIGN,
+            validateRules: rootStore!.validateRules,
+            onChange: this.onChange
+          }}
+        >
           <ElementControl
             element={page}
             renderOption={{withBox: true, withLabel: true}}

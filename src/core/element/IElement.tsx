@@ -31,6 +31,7 @@ export default interface IElement {
   children?: Array<IElement>
   parent?: IElement | null // 父容器
   dirty?: boolean // 待清理状态
+  rules?: Array<any>
 
   // render(renderOption?:RenderOption): ReactElement | null
 

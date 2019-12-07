@@ -1,11 +1,22 @@
 import React, { Component, SFC } from 'react'
 // import { inject } from 'mobx-react'
 import { Form } from 'antd'
+import Schema from 'async-validator'
 import Element from "../../core/element/Element"
 // import { Store } from '../../store'
 import { canBeDroped, staticMembers } from '../../core/decorator'
 import ElementCategory from '../../core/element/ElementCategory'
 import { ElementConsumer } from '../../core/element/ElementContext'
+import { VALIDATE_STATUS } from '../../types'
+
+type ControlProps = {
+  // rootStore: Store,
+  name: string,
+  label: string,
+  value?: any,
+  className?: string,
+  onClick?: Function
+}
 
 /**
  * 高阶组件装饰器，封装表单控件统一行为：
@@ -25,14 +36,43 @@ export function formControl(target: Object, name: string, descriptor: TypedPrope
 export function wrapComponent(Comp: typeof Component | SFC): typeof React.Component {
   // @inject('rootStore')
   // @observer
-  class RenderCls extends React.Component<{
-    // rootStore: Store,
-    name: string,
-    label: string,
-    value?: any,
-    className?: string,
-    onClick?: Function
+  class RenderCls extends React.Component<ControlProps, {
+    needValidate: boolean
   }> {
+    constructor(props: ControlProps) {
+      super(props)
+      this.state = {
+        needValidate: false
+      }
+    }
+
+    onBlur = () => {
+      this.setState({
+        needValidate: true
+      })
+    }
+
+    validate(validateRules?: {[key: string]: any}, value?: any): any {
+      const rules = validateRules && validateRules[this.props.name]
+      // console.log(validateRules, this.props.name, rules, value, this.state.needValidate)
+      if (!this.state.needValidate || !rules || rules.length === 0) {
+        return null
+      }
+
+      const validator = new Schema({})
+      let result = null
+      validator.validate({[name]: value}, (errors: Array<string>) => {
+        if (errors && errors.length > 0) {
+          result = {
+            validateStatus: 'error',
+            help: '输入错误'
+          }
+        }
+      })
+
+      return result
+    }
+
     render() {
       const { name, label, className, value: transferValue, ...props } = this.props
       // console.log('transfer value', transferValue)
@@ -40,13 +80,21 @@ export function wrapComponent(Comp: typeof Component | SFC): typeof React.Compon
       return (
         <ElementConsumer>
           {
-            ({ value, onChange }) => (
-              <Form.Item label={label} colon={false} className={className}>
+            ({ value, validateRules, onChange }) => (
+              <Form.Item
+                label={label}
+                colon={false}
+                className={className}
+                {...this.validate(validateRules, value)}
+              >
                 <Comp
                   {...props}
                   name={ name }
                   value={value ? value[name] : transferValue}
-                  onChange={(e: React.ChangeEvent) => onChange!(e, name)}
+                  onBlur={this.onBlur}
+                  onChange={(e: React.ChangeEvent) => {
+                    onChange!(e, name)
+                  }}
                 />
               </Form.Item>
             )

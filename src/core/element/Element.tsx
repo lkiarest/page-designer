@@ -23,6 +23,7 @@ export default abstract class Element implements IElement {
   @observable public children?: Array<IElement>
   @observable public parent?: IElement | null
   @observable public props?: CommonPropType
+  @observable public rules?: Array<any>
 
   static category: ElementCategory = ElementCategory.BASIC
   static icon: string = 'file'
@@ -38,6 +39,7 @@ export default abstract class Element implements IElement {
     // this.type = this.ctor().type
     this.name = option.name
     this.dataType = option.dataType
+    this.rules = option.rules || []
 
     this.children = option.children && option.children.map(item => factory.createElement(item, this))
     this.parent = null
@@ -68,6 +70,7 @@ export default abstract class Element implements IElement {
       type: this.type,
       props: this.props,
       name: this.name,
+      rules: this.rules,
       dataType: this.dataType,
     }
 

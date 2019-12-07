@@ -9,6 +9,7 @@ import IElement from '../../core/element/IElement'
 type FormRenderProps = {
   propSchema: Array<JsonFormat>,
   formData?: {[key: string]: any},
+  rules?: {[key: string]: any},
   onChange: Function,
 }
 
@@ -30,7 +31,7 @@ class FormRender extends React.Component<FormRenderProps> {
   }
 
   render() {
-    const { propSchema, formData } = this.props
+    const { propSchema, formData, rules } = this.props
     if (!propSchema) {
       return null
     }
@@ -41,7 +42,14 @@ class FormRender extends React.Component<FormRenderProps> {
     // console.log('ant render:', formData)
 
     return (
-      <ElementProvider value={{ value: formData, mode: RENDER_MODE_PREVIEW, onChange: this.onChange }}>
+      <ElementProvider
+        value={{
+          value: formData,
+          mode: RENDER_MODE_PREVIEW,
+          validateRules: rules,
+          onChange: this.onChange
+        }}
+      >
         <div>
           {
             this.elements && this.elements.map(ele => (

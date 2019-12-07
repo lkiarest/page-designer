@@ -7,6 +7,7 @@ import { RENDER_MODE_DESIGN } from '../../configs'
 const ctx = React.createContext<{
   mode: string,
   value?: any,
+  validateRules?: {[key: string]: any},
   onChange?: Function
 }>({
   mode: RENDER_MODE_DESIGN

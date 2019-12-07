@@ -3,7 +3,7 @@ import ElementOption from '../core/ElementOption'
 import rawOptions from '../mock.json'
 import NullElement from '../core/element/NullElement'
 import factory from '../core/ElementFactory'
-import { ROOT_PAGE, DATA_NAME_PREFIX, PROP_NAME_PREFIX } from '../configs'
+import { ROOT_PAGE, PROP_NAME_PREFIX } from '../configs'
 import IElement from '../core/element/IElement'
 import { parseValue, triggerLayoutChange/* , willReflow */ } from '../core/utils'
 import Records from './Records'
@@ -46,6 +46,22 @@ const findAndHandleElement = (elementKey: string, list: Array<IElement>, callbac
   return false
 }
 
+// 收集所有校验规则
+const findAllRules = (list: Array<IElement>, result:{[key: string]: any} = {}) => {
+  for (let i = 0, len = list.length; i < len; i++) {
+    const item = list[i]
+    if (item.name && item.rules &&  item.rules.length > 0) {
+      result[item.name] = item.rules
+    }
+
+    if (item.children) {
+      findAllRules(item.children, result)
+    }
+  }
+
+  return result
+}
+
 const nullElement = new NullElement()
 const rootElement = new PageElement(new ElementOption({
   type: 'page',
@@ -81,6 +97,10 @@ export class Store {
     }, {
       delay: 100
     })
+  }
+
+  @computed get validateRules(): {[key: string]: any} {
+    return findAllRules(this.elements)
   }
 
   @computed get selectedProps(): Array<ElementOption> {
@@ -230,6 +250,13 @@ export class Store {
     }
   }
 
+  @action handleModelChange(e: any) {
+    const { selectedElement } = this
+    selectedElement.name = e.name
+    selectedElement.dataType = e.dataType
+    selectedElement.rules = e.rules
+  }
+
   @action handleStyleChange(e: any) {
     const { selectedElement } = this
     if (!selectedElement) {
@@ -259,9 +286,7 @@ export class Store {
 
     const value = e.target ? e.target.value : e
 
-    if (name.startsWith(DATA_NAME_PREFIX)) {
-      selectedElement.name = value
-    } else if (name.startsWith(PROP_NAME_PREFIX)) {
+    if (name.startsWith(PROP_NAME_PREFIX)) {
       name = name.replace(PROP_NAME_PREFIX, '')
       selectedElement.props = {
         ...selectedElement.props,

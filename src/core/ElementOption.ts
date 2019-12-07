@@ -9,6 +9,7 @@ export default class ElementOption {
   type: string
   name?:string
   dataType?: string // 允许绑定的数据类型
+  rules?: Array<any> // 校验规则
   props?: CommonPropType
   children?: Array<ElementOption>
 
@@ -16,6 +17,7 @@ export default class ElementOption {
     this.type = option.type
     this.props = option.props
     this.name = option.name
+    this.rules = option.rules || []
     this.dataType = option.dataType || 'string' // 默认为字符串类型
     this.children = option.children
     // 若没有定义 key，则随机生成

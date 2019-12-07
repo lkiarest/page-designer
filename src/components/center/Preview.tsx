@@ -9,12 +9,27 @@ import { JsonFormat } from '../../types'
 import styles from './index.module.less'
 
 type PropType = {
-  jsonSchema?: Array<JsonFormat>
+  jsonSchema?: Array<JsonFormat>,
 }
 
 type StateType = {
   visible: boolean,
   formData: any
+}
+
+const findAllRules = (jsonSchema: Array<JsonFormat>, result:{[key: string]: any} = {}) => {
+  jsonSchema.forEach(item => {
+    // console.log('loop', item.name, item.rules)
+    if (item.name && item.rules) {
+      result[item.name] = item.rules
+    }
+
+    if (item.children) {
+      findAllRules(item.children, result)
+    }
+  })
+
+  return result
 }
 
 class Preview extends React.Component<PropType, StateType> {
@@ -51,7 +66,7 @@ class Preview extends React.Component<PropType, StateType> {
 
   showData = () => {
     const { formData } = this.state
-    console.log('form data:', formData)
+    console.info('form data:', formData)
   }
 
   onChange = (formData: any) => {
@@ -69,6 +84,8 @@ class Preview extends React.Component<PropType, StateType> {
   render() {
     const { jsonSchema } = this.props
     const { formData } = this.state
+    const rules = findAllRules(jsonSchema || [])
+    // console.log('cal rules', rules)
 
     return jsonSchema && (
       <div className={styles.preview}>
@@ -87,6 +104,7 @@ class Preview extends React.Component<PropType, StateType> {
           <AntRender
             propSchema={jsonSchema}
             formData={formData}
+            rules={rules}
             onChange={this.onChange}
           />
         </Modal>

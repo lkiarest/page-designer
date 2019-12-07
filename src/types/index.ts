@@ -31,6 +31,7 @@ export type JsonFormat = {
   value?: any,
   name?: string,
   dataType?: string,
+  rules?: Array<{[key: string]: any}>,
   children?: Array<JsonFormat>
 }
 
@@ -121,8 +122,11 @@ export type OptionType = {
   key?: string,
   name?:string,
   dataType?:string // 绑定数据类型
+  rules?: Array<any> // 校验规则
   children?: Array<OptionType>
 }
 
 // 控件数据类型
 export type ValueDataType = Map<string, any>
+
+export type VALIDATE_STATUS = "" | "error" | "success" | "warning" | "validating" | undefined
