@@ -9,44 +9,32 @@ import { staticMembers/*, canBeDroped, canDropTo*/ } from '../../core/decorator'
   type: 'button',
   icon: 'border',
   inline: true, // 行内元素
-  props: [{ // 右侧属性面板中可以编辑的属性列表
-    name: 'children',
-    type: 'input',
-    props: {
-      label: '按钮文本'
-    },
-    default: '按钮',
-    dataType: 'string'
-  }, {
-    name: 'type',
-    type: 'select',
-    props: {
-      label: '风格',
-      options: [
-        { label: 'Primary', value: 'primary' },
-        { label: 'Dashed', value: 'dashed' },
-        { label: 'Danger', value: 'danger' },
-        { label: 'Link', value: 'link' },
-        { label: 'Default', value: 'default' },
-      ]
-    },
-    default: 'default',
-    dataType: 'string'
-  }, {
-    name: 'size',
-    type: 'radio',
-    props: {
-      label: '尺寸',
-      options: [
-        { label: 'L', value: 'large'},
-        { label: 'M', value: 'default'},
-        { label: 'S', value: 'small'}
-      ],
-      buttonStyle: 'solid'
-    },
-    default: 'default',
-    dataType: 'string'
-  }]
+  props: {
+    type: 'object',
+    properties: {
+      children: {
+        title: '按钮文本',
+        type: 'string',
+        default: '按钮',
+      },
+      type: {
+        title: '风格',
+        type: 'string',
+        enum: ['primary', 'dashed', 'danger', 'link', 'default'],
+        enumNames: ['Primary', 'Dashed', 'Danger', 'Link', 'Default'],
+        default: 'default',
+      },
+      size: {
+        title: '尺寸',
+        type: 'string',
+        enum: ['large', 'default', 'small'],
+        enumNames: ['L', 'M', 'S'],
+        'ui:widget': 'radio',
+        'ui:options': { buttonStyle: 'solid' },
+        default: 'default',
+      }
+    }
+  },
 })
 // @canDropTo('row') // 指定可以将此控件拖入的其他控件名称
 // @canBeDroped('!col') // 指定不可拖入此控件的控件名称

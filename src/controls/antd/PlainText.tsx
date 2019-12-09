@@ -8,19 +8,17 @@ import { staticMembers/*, canBeDroped, canDropTo*/ } from '../../core/decorator'
   category: ElementCategory.BASIC,
   type: 'plain-text',
   icon: 'file-text',
-  props: [{ // 右侧属性面板中可以编辑的属性列表
-    name: 'children',
-    dataType: 'string',
-    type: 'textarea',
-    props: {
-      label: '文本',
-      rows: 4,
-      props: {
-        autoSize: { minRows: 2, maxRows: 6 }
-      }
-    },
-    default: '普通文本'
-  }]
+  props: {
+    type: 'object',
+    properties: {
+      children: {
+        title: '文本',
+        type: 'string',
+        'ui:widget': 'textarea',
+        default: '普通文本'
+      },
+    }
+  },
 })
 // @canDropTo('row') // 指定可以将此控件拖入的其他控件名称
 // @canBeDroped('!col') // 指定不可拖入此控件的控件名称

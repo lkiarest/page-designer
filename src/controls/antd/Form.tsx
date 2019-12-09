@@ -7,6 +7,7 @@ import ElementCategory from '../../core/element/ElementCategory'
 import { ElementConsumer } from '../../core/element/ElementContext'
 import { RuleItem, VALIDATE_STATUS } from '../../types'
 import { parseValue } from '../../core/utils'
+import { number } from 'prop-types'
 
 type ControlProps = {
   // rootStore: Store,
@@ -177,34 +178,44 @@ export function wrapComponent(Comp: typeof Component | SFC): typeof React.Compon
   category: ElementCategory.FORM,
   type: 'form',
   icon: 'form',
-  props: [{
-    name: 'layout',
-    type: 'select',
-    props: {
-      label: '对齐方式',
-      options: [
-        { label: '水平', value: 'horizontal' },
-        { label: '垂直', value: 'vertical' },
-        { label: '内联', value: 'inline' }]
-    },
-    default: 'horizontal',
-  }, {
-    name: 'labelCol',
-    type: 'json',
-    props: {
-      label: '标签宽度'
-    },
-    default: { "span": 6 },
-    dataType: 'string'
-  }, {
-    name: 'wrapperCol',
-    type: 'json',
-    props: {
-      label: '内容宽度'
-    },
-    default: { "span": 14 },
-    dataType: 'object'
-  }]
+  props: {
+    type: 'object',
+    properties: {
+      layout: {
+        title: '对齐方式',
+        enum: ['horizontal', 'vertical', 'inline'],
+        enumNames: ['水平', '垂直', '内联'],
+        'ui:widget': 'radio',
+        default: 'horizontal',
+      },
+      labelCol: {
+        title: '标签宽度',
+        type: 'object',
+        properties: {
+          span: {
+            type: 'number',
+            default: 6,
+            'ui:options': {
+              'addonAfter': '列'
+            }
+          }
+        }
+      },
+      wrapperCol: {
+        title: '内容宽度',
+        type: 'object',
+        properties: {
+          span: {
+            type: 'number',
+            default: 14,
+            'ui:options': {
+              'addonAfter': '列'
+            }
+          }
+        }
+      }
+    }
+  },
 })
 @canBeDroped()
 class InnerCls extends Element {

@@ -12,21 +12,21 @@ const { TextArea } = Input
   category: ElementCategory.FORM,
   type: 'textarea',
   icon: 'edit',
-  props: [{
-    name: 'label',
-    type: 'input',
-    props: {
-      label: '标签文字',
-    },
-    default: '文本域',
-  }, {
-    name: 'placeholder',
-    type: 'input',
-    props: {
-      label: '提示文字'
-    },
-    default: '请输入',
-  }]
+  props: {
+    type: 'object',
+    properties: {
+      label: {
+        title: '标签文字',
+        type: 'string',
+        default: '文本域'
+      },
+      placeholder: {
+        title: '提示文字',
+        type: 'string',
+        default: '请输入',
+      }
+    }
+  },
 })
 class InnerCls extends Element {
   @formControl

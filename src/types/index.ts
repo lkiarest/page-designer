@@ -118,7 +118,7 @@ export type StaticMemberDeco = {
   category?: ElementCategory,
   type: string,
   icon?: string,
-  props?: StaticPropsType,
+  props?: any,
   inline?:boolean // 是否为行内元素
   checkDataType?: boolean,// 是否需要校验数据类型
 }

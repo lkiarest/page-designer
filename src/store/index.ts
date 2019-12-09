@@ -88,10 +88,7 @@ export class Store {
 
   constructor() {
     autorun(() => {
-      this.records.add(this.jsonData)
-
-      this.canUndo = this.records.hasPrev()
-      this.canRedo = this.records.hasNext()
+      this.saveState()
 
       triggerLayoutChange(120) // wait for animating
     }, {
@@ -151,6 +148,14 @@ export class Store {
   // 控件列表的 json 表示
   @computed get jsonData() {
     return (this.elements || []).map((item: IElement) => item.jsonData())
+  }
+
+  // 保存状态
+  @action saveState() {
+    this.records.add(this.jsonData)
+
+    this.canUndo = this.records.hasPrev()
+    this.canRedo = this.records.hasNext()
   }
 
   @action undo() {
@@ -268,6 +273,24 @@ export class Store {
     }
 
     selectedElement.props.style = e
+  }
+
+  @action handlePropsChange(data: any) {
+    const { selectedElement } = this
+    if (!selectedElement) {
+      return
+    }
+
+    if (!selectedElement.props) {
+      selectedElement.props = {}
+    }
+
+    selectedElement.props = {
+      ...selectedElement.props,
+      ...data
+    }
+
+    // this.saveState()
   }
 
   /**

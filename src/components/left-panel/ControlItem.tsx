@@ -25,18 +25,26 @@ type AllProps = DragProps & ConnectedProps
 const spec = {
   beginDrag(props: DragProps, monitor: DragSourceMonitor, component: ControlItem): DragItemType {
     const ControlCtor = props.control
-    const defaultProps = ControlCtor.props || []
+    const defaultProps = ControlCtor.props
+
+    console.log('defaultProps', defaultProps)
+    const { properties } = defaultProps
+    const extraProps: {[key: string]: any} = {}
+
+    if (properties) {
+      Object.keys(properties).forEach(key => {
+        const item = properties[key]
+        if (item.default) {
+          extraProps[key] = item.default
+        }
+      })
+    }
 
     const newElem = new ControlCtor(new ElementOption({ // 创建默认元素
       type: ControlCtor.type,
       props: {
         label: ControlCtor.displayName,
-        ...defaultProps.reduce((ret: PlainObjectType, item) => {
-          if (item.name && item.default) {
-            ret[item.name] = item.default
-          }
-          return ret
-        }, {})
+        ...extraProps,
       }
     }))
 
