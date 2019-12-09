@@ -12,9 +12,10 @@ export default () => ({
       type: 'string',
       title: '数据类型',
       enum: [
-        'string', 'number', 'boolean', 'method', 'regexp', 'integer', 'float', 'array', 'object',
-        'enum', 'date', 'url', 'hex', 'email', 'any',
-      ]
+        '', 'string', 'number', 'boolean', 'regexp', 'array',
+        'date', 'url', 'email',
+      ],
+      'ui:hidden': false
     },
     rules: {
       type: 'array',

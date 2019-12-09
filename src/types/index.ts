@@ -23,6 +23,22 @@ export type RECT = POINT & {
   right?: number,
 }
 
+export type ModelType = "string" | "number" | "boolean" | "object" | "regexp" | "array" | "date" | "url" | "email" | undefined
+
+export type InternalRule = 'required' | 'min' | 'max' | 'len' | 'pattern'
+
+export type ValidateRule = {
+  name?: InternalRule,
+  type?: ModelType,
+  required?: boolean,
+  pattern?: string,
+  min?: number, // Range of type 'string' and 'array'
+  max?: number, // Range of type 'string' and 'array'
+  len?: number, // Length of type 'string' and 'array'
+}
+
+export type RuleItem = {[key: string]: ValidateRule[]}
+
 // 控件的 json 表示
 export type JsonFormat = {
   key: string,
@@ -30,8 +46,8 @@ export type JsonFormat = {
   props: any,
   value?: any,
   name?: string,
-  dataType?: string,
-  rules?: Array<{[key: string]: any}>,
+  dataType?: ModelType,
+  rules?: Array<RuleItem>,
   children?: Array<JsonFormat>
 }
 
@@ -92,7 +108,7 @@ export type CommonPropType = {
   default?: any,
   props?: any
   type: string,
-  dataType?: string,
+  dataType?: ModelType,
   [key: string]: any,
 }
 
@@ -104,6 +120,7 @@ export type StaticMemberDeco = {
   icon?: string,
   props?: StaticPropsType,
   inline?:boolean // 是否为行内元素
+  checkDataType?: boolean,// 是否需要校验数据类型
 }
 
 // 拖动时计算移入的元素用
@@ -121,12 +138,12 @@ export type OptionType = {
   props?: any,
   key?: string,
   name?:string,
-  dataType?:string // 绑定数据类型
-  rules?: Array<any> // 校验规则
+  dataType?: ModelType // 绑定数据类型
+  rules?: Array<RuleItem> // 校验规则
   children?: Array<OptionType>
 }
 
 // 控件数据类型
-export type ValueDataType = Map<string, any>
+export type ValueDataType = Map<string, ModelType>
 
 export type VALIDATE_STATUS = "" | "error" | "success" | "warning" | "validating" | undefined

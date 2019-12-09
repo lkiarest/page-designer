@@ -9,6 +9,7 @@ import ElementCategory from '../../core/element/ElementCategory'
   category: ElementCategory.FORM,
   type: 'input',
   icon: 'edit',
+  checkDataType: true,
   props: [{
     name: 'label',
     type: 'input',

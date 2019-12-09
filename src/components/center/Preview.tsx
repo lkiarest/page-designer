@@ -1,11 +1,7 @@
 import React from 'react'
-// import ReactDom from 'react-dom'
 import { Modal, Button } from 'antd'
-// import { inject, observer } from 'mobx-react'
-// import { Store } from '../../store'
-// import FormRenderAnt from './FormRenderAnt'
 import AntRender from '../form-render/AntRender'
-import { JsonFormat } from '../../types'
+import { JsonFormat, ValidateRule } from '../../types'
 import styles from './index.module.less'
 
 type PropType = {
@@ -17,11 +13,16 @@ type StateType = {
   formData: any
 }
 
-const findAllRules = (jsonSchema: Array<JsonFormat>, result:{[key: string]: any} = {}) => {
+const findAllRules = (jsonSchema: Array<JsonFormat>, result:{[key: string]: ValidateRule[]} = {}) => {
   jsonSchema.forEach(item => {
-    // console.log('loop', item.name, item.rules)
-    if (item.name && item.rules) {
-      result[item.name] = item.rules
+    // only support rule check for input control
+    if (item.name && item.type === 'input' && item.rules) {
+      const dataType = item.dataType ? { type: item.dataType } : null
+      if (dataType) {
+        result[item.name] = [dataType, ...item.rules]
+      } else {
+        result[item.name] = [...item.rules]
+      }
     }
 
     if (item.children) {
@@ -50,17 +51,6 @@ class Preview extends React.Component<PropType, StateType> {
   preview = (): void => {
     this.setState({
       visible: true
-    }, () => {
-      // const { jsonSchema } = this.props
-
-      // if (jsonSchema) {
-      //   setTimeout(() => {
-      //     ReactDom.render(
-      //       <AntRender propSchema={jsonSchema} />,
-      //       this.ref.current
-      //     )
-      //   }, 0)
-      // }
     })
   }
 
@@ -85,7 +75,6 @@ class Preview extends React.Component<PropType, StateType> {
     const { jsonSchema } = this.props
     const { formData } = this.state
     const rules = findAllRules(jsonSchema || [])
-    // console.log('cal rules', rules)
 
     return jsonSchema && (
       <div className={styles.preview}>

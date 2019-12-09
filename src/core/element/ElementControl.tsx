@@ -68,6 +68,10 @@ class ElementControl extends React.Component<ElementControlProps, { display: str
       mergedProps.name = element.name
     }
 
+    if (element.dataType) {
+      mergedProps.dataType = element.dataType
+    }
+
     const  preparedProps = element.prepareProps(mergedProps)
 
     const dropInBox = renderOption.withBox && element.canBeDroped()

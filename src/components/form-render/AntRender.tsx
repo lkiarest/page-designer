@@ -24,9 +24,8 @@ class FormRender extends React.Component<FormRenderProps> {
     this.elements = null
   }
 
-  onChange = (e: any, name: string) => {
+  onChange = (value: any, name: string) => {
     const { formData, onChange: onDataChange } = this.props
-    const value = e.target ? e.target.value : e
     onDataChange({ ...formData, [name]: value })
   }
 

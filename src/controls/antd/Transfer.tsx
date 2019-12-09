@@ -34,7 +34,7 @@ for (let i = 0; i < 20; i++) {
       label: '数据源'
     },
     default: mockData,
-    dataType: ''
+    dataType: 'array'
   }, {
     name: 'leftLabel',
     type: 'input',

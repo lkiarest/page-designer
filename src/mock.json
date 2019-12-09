@@ -11,7 +11,8 @@
         "marginBottom": "0"
       }
     },
-    "dataType": "string"
+    "rules": []
+    
   },
   {
     "key": "4298781291918512",
@@ -21,7 +22,8 @@
       "label": "行(栅格)",
       "style": {}
     },
-    "dataType": "string",
+    "rules": [],
+    
     "children": [
       {
         "key": "9956395404130711",
@@ -32,7 +34,8 @@
           "label": "列(栅格)",
           "style": {}
         },
-        "dataType": "string",
+        "rules": [],
+        
         "children": [
           {
             "key": "6409028423875944",
@@ -48,7 +51,8 @@
               "label": "表单",
               "style": {}
             },
-            "dataType": "string",
+            "rules": [],
+            
             "children": [
               {
                 "key": "8127574242987869",
@@ -60,7 +64,8 @@
                     "textAlign": "center"
                   }
                 },
-                "dataType": "string"
+                "rules": []
+                
               },
               {
                 "key": "5314832328409442",
@@ -74,7 +79,7 @@
                   }
                 },
                 "name": "username",
-                "dataType": "string"
+                "rules": []
               },
               {
                 "key": "0401086328205258",
@@ -99,7 +104,8 @@
                   "style": {}
                 },
                 "name": "radio1",
-                "dataType": "string"
+                "rules": []
+                
               },
               {
                 "key": "6397080982124510",
@@ -123,7 +129,8 @@
                   "style": {}
                 },
                 "name": "select1",
-                "dataType": "string"
+                "rules": [],
+                "dataType": "number"
               },
               {
                 "key": "4808061986138541",
@@ -134,7 +141,8 @@
                   "style": {}
                 },
                 "name": "switch1",
-                "dataType": "string"
+                "rules": [],
+                "dataType": "boolean"
               },
               {
                 "key": "7538034164519258",
@@ -158,7 +166,8 @@
                   "style": {}
                 },
                 "name": "checkbox1",
-                "dataType": "string"
+                "rules": [],
+                "dataType": "array"
               },
               {
                 "key": "3090715532919681",
@@ -171,7 +180,8 @@
                   "style": {}
                 },
                 "name": "rate1",
-                "dataType": "string"
+                "rules": [],
+                "dataType": "number"
               },
               {
                 "key": "2391648668808612",
@@ -182,7 +192,8 @@
                   "style": {}
                 },
                 "name": "textarea1",
-                "dataType": "string"
+                "rules": []
+                
               },
               {
                 "key": "4648025677912127",
@@ -196,7 +207,8 @@
                   "style": {}
                 },
                 "name": "slider1",
-                "dataType": "string"
+                "rules": [],
+                "dataType": "number"
               }
             ]
           }
@@ -212,7 +224,8 @@
           "className": "gutter-row",
           "style": {}
         },
-        "dataType": "string",
+        "rules": [],
+        
         "children": [
           {
             "key": "2818679165513551",
@@ -222,7 +235,8 @@
               "label": "普通文本",
               "style": {}
             },
-            "dataType": "string"
+            "rules": []
+            
           },
           {
             "key": "3768555170943659",
@@ -234,7 +248,8 @@
               "label": "按钮",
               "style": {}
             },
-            "dataType": "string"
+            "rules": []
+            
           },
           {
             "key": "1388367004234141",
@@ -244,7 +259,8 @@
               "label": "普通文本",
               "style": {}
             },
-            "dataType": "string"
+            "rules": []
+            
           },
           {
             "key": "4438789048717182",
@@ -256,7 +272,8 @@
                 "marginBottom": "8px"
               }
             },
-            "dataType": "string"
+            "rules": []
+            
           },
           {
             "key": "6815047577054774",
@@ -268,7 +285,8 @@
               "label": "链接",
               "style": {}
             },
-            "dataType": "string"
+            "rules": []
+            
           },
           {
             "key": "3409099978221872",
@@ -278,7 +296,8 @@
               "label": "普通文本",
               "style": {}
             },
-            "dataType": "string"
+            "rules": []
+            
           },
           {
             "key": "7772036219889191",
@@ -292,7 +311,8 @@
                 "fontSize": "20px"
               }
             },
-            "dataType": "string"
+            "rules": []
+            
           },
           {
             "key": "1027353075515638",
@@ -307,7 +327,8 @@
                 "marginRight": "8px"
               }
             },
-            "dataType": "string"
+            "rules": []
+            
           },
           {
             "key": "2975511032094302",
@@ -321,7 +342,8 @@
                 "fontSize": "20px"
               }
             },
-            "dataType": "string"
+            "rules": []
+            
           },
           {
             "key": "3446094779693065",
@@ -336,7 +358,8 @@
                 "marginRight": "8px"
               }
             },
-            "dataType": "string"
+            "rules": []
+            
           },
           {
             "key": "1137942118612651",
@@ -350,7 +373,8 @@
                 "fontSize": "20px"
               }
             },
-            "dataType": "string"
+            "rules": []
+            
           }
         ]
       }

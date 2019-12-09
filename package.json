@@ -6,7 +6,7 @@
   "dependencies": {
     "@types/lodash.isequal": "^4.5.5",
     "antd": "^3.23.4",
-    "async-validator": "1.11.5",
+    "async-validator": "^3.2.3",
     "classnames": "^2.2.6",
     "events": "^3.0.0",
     "fast-memoize": "^2.5.1",

@@ -1,15 +1,15 @@
 /**
  * 元素初始化参数
  */
-import {OptionType, CommonPropType} from '../types'
+import {OptionType, CommonPropType, RuleItem, ModelType} from '../types'
 import { genKey } from './utils'
 
 export default class ElementOption {
   key?: string
   type: string
   name?:string
-  dataType?: string // 允许绑定的数据类型
-  rules?: Array<any> // 校验规则
+  dataType?: ModelType // 允许绑定的数据类型
+  rules?: Array<RuleItem> // 校验规则
   props?: CommonPropType
   children?: Array<ElementOption>
 
@@ -18,7 +18,7 @@ export default class ElementOption {
     this.props = option.props
     this.name = option.name
     this.rules = option.rules || []
-    this.dataType = option.dataType || 'string' // 默认为字符串类型
+    this.dataType = option.dataType
     this.children = option.children
     // 若没有定义 key，则随机生成
     this.key = option.key ? option.key : genKey()
@@ -43,6 +43,7 @@ export default class ElementOption {
           type: option.type,
           name: option.name,
           props: option.props,
+          dataType: option.dataType,
           children: option.children ? ElementOption.loadOptions(option.children) : undefined
         })
 

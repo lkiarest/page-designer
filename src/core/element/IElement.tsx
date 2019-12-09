@@ -17,6 +17,7 @@ export interface ElementContructor {
   category: ElementCategory
   icon: string
   displayName: string
+  checkDataType?: boolean,
   inline?:boolean // 是否为行内元素
   props?: StaticPropsType
 }

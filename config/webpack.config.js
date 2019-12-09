@@ -26,7 +26,7 @@ const ModuleNotFoundPlugin = require('react-dev-utils/ModuleNotFoundPlugin');
 const ForkTsCheckerWebpackPlugin = require('react-dev-utils/ForkTsCheckerWebpackPlugin');
 const typescriptFormatter = require('react-dev-utils/typescriptFormatter');
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-const AntdDayjsWebpackPlugin = require('antd-dayjs-webpack-plugin');
+// const AntdDayjsWebpackPlugin = require('antd-dayjs-webpack-plugin');
 // const eslint = require('eslint');
 
 const postcssNormalize = require('postcss-normalize');
@@ -542,7 +542,7 @@ module.exports = function(webpackEnv) {
     plugins: [
       // Generates an `index.html` file with the <script> injected.
       // new BundleAnalyzerPlugin(),
-      new AntdDayjsWebpackPlugin(),
+      // new AntdDayjsWebpackPlugin(),
       new HtmlWebpackPlugin(
         Object.assign(
           {},

@@ -273,8 +273,7 @@ export class Store {
   /**
    * 控件属性面板
    */
-  @action handleFormChangeEvent(e: any, name: string) {
-    console.debug('handleFormChangeEvent', e, name, e.target ? e.target.value : e)
+  @action handleFormChangeEvent(value: any, name: string) {
     const { selectedElement } = this
     if (!selectedElement || !name) {
       return
@@ -283,8 +282,6 @@ export class Store {
     if (!selectedElement.props) {
       selectedElement.props = {}
     }
-
-    const value = e.target ? e.target.value : e
 
     if (name.startsWith(PROP_NAME_PREFIX)) {
       name = name.replace(PROP_NAME_PREFIX, '')

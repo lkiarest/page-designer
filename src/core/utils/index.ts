@@ -26,14 +26,28 @@ export const shallowCompare = (obj1: any, obj2: any) => {
  */
 export const parseValue = (value: any, type: string) => {
   switch(type) {
-    case 'string':
-      return value
     case 'number':
-      return +value
+      const val = +value
+      return Number.isNaN(val) ? value : val
     case 'boolean':
       return !!value
-    default:
+    case 'regexp': {
+      try {
+        return new RegExp(value)
+      } catch(e) {
+        return null
+      }
+    }
+    case 'date': {
+      try {
+        return new Date(value)
+      } catch(e) {
+        return null
+      }
+    }
+    default: {
       return value
+    }
   }
 }
 

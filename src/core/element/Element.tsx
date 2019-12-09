@@ -1,7 +1,7 @@
 import React, { SFC } from 'react'
 import ReactDOM from 'react-dom'
 import { observable } from 'mobx'
-import { JsonFormat, CommonPropType, StaticPropsType, RECT } from '../../types'
+import { JsonFormat, CommonPropType, StaticPropsType, RECT, RuleItem, ModelType } from '../../types'
 import ElementOption from '../ElementOption'
 import ElementCategory from './ElementCategory'
 import factory from '../ElementFactory'
@@ -19,11 +19,11 @@ export default abstract class Element implements IElement {
   @observable public key: string
   @observable public value?: any
   @observable public name?: string
-  @observable public dataType?: string
+  @observable public dataType?: ModelType
   @observable public children?: Array<IElement>
   @observable public parent?: IElement | null
   @observable public props?: CommonPropType
-  @observable public rules?: Array<any>
+  @observable public rules?: Array<RuleItem>
 
   static category: ElementCategory = ElementCategory.BASIC
   static icon: string = 'file'
@@ -137,6 +137,10 @@ export default abstract class Element implements IElement {
    */
   isInline(): boolean {
     return !!this.ctor().inline
+  }
+
+  get shouldCheckDataType(): boolean {
+    return !!this.ctor().checkDataType
   }
 
   // 获取控件的默认属性值
