@@ -10,7 +10,7 @@ import { DATA_NAME_PREFIX } from '../../../configs'
 @observer
 class DataComponent extends React.Component<{
   children?: Array<ReactElement>,
-  renderOptoin?: RenderOption,
+  renderOption?: RenderOption,
   rootStore?: Store
 }> {
   render() {
