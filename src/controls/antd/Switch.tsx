@@ -10,28 +10,25 @@ import { formControl } from './Form'
   category: ElementCategory.FORM,
   type: 'switch',
   icon: 'switcher',
-  props: [{ // 右侧属性面板中可以编辑的属性列表
-    name: 'label',
-    type: 'input',
-    props: {
-      label: '标签'
-    },
-    default: '开关',
-    dataType: 'string'
-  }, {
-    name: 'size',
-    type: 'radio',
-    props: {
-      label: '尺寸',
-      options: [
-        { label: 'M', value: 'default' },
-        { label: 'S', value: 'small' }
-      ],
-      buttonStyle: 'solid'
-    },
-    default: 'default',
-    dataType: 'string'
-  }]
+  props: {
+    type: 'object',
+    properties: {
+      label: {
+        title: '标签',
+        type: 'string',
+        default: '开关'
+      },
+      size: {
+        title: '尺寸',
+        enum: ['default', 'small'],
+        enumNames: ['M', 'S'],
+        default: 'default',
+        'ui:options': {
+          buttonStyle: 'solid'
+        }
+      }
+    }
+  },
 })
 // @canDropTo('row') // 指定可以将此控件拖入的其他控件名称
 // @canBeDroped('!col') // 指定不可拖入此控件的控件名称

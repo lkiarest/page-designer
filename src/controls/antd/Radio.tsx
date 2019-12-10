@@ -10,39 +10,44 @@ import { formControl } from './Form'
   category: ElementCategory.FORM,
   type: 'radio',
   icon: 'tablet',
-  props: [{
-    name: 'label',
-    type: 'input',
-    props: {
-      label: '标签文字',
-    },
-    default: '单选框',
-  }, { // 右侧属性面板中可以编辑的属性列表
-    name: 'options',
-    type: 'list',
-    props: {
-      label: '选项列表'
-    },
-    default: [
-      { value: 0, label: '选项一'},
-      { value: 1, label: '选项二'},
-      { value: 2, label: '选项三'},
-    ],
-    dataType: 'string'
-  }, {
-    name: 'buttonStyle',
-    type: 'radio',
-    props: {
-      label: '按钮风格',
-      options: [
-        { value: '', label: '无'},
-        { value: 'solid', label: 'Solid'},
-        { value: 'outline', label: 'Outline'},
-      ],
-      buttonStyle: 'solid',
-    },
-    default: '',
-  }]
+  props: {
+    type: 'object',
+    properties: {
+      label: {
+        title: '标签文字',
+        type: 'string',
+        default: '单选框'
+      },
+      buttonStyle: {
+        title: '按钮风格',
+        type: 'string',
+        enum: ['', 'solid', 'outline'],
+        enumNames: ['None', 'Solid', 'Outline'],
+        default: '',
+        'ui:widget': 'radio',
+      },
+      options: {
+        title: '选项列表',
+        type: 'array',
+        "ui:options": {
+          "foldable": true
+        },
+        items: {
+          type: 'object',
+          properties: {
+            label: {
+              type: 'string',
+              title: '选项说明'
+            },
+            value: {
+              type: 'string',
+              title: '选项值',
+            }
+          },
+        },
+      }
+    }
+  },
 })
 // @canDropTo('row') // 指定可以将此控件拖入的其他控件名称
 // @canBeDroped('!col') // 指定不可拖入此控件的控件名称

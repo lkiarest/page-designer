@@ -8,23 +8,21 @@ import { staticMembers, canBeDroped, canDropTo } from '../../core/decorator'
   category: ElementCategory.LAYOUT,
   type: 'col',
   icon: 'column-height',
-  props: [{
-    name: 'span',
-    type: 'input',
-    props: {
-      label: '列宽'
-    },
-    default: 11,
-    dataType: 'number'
-  }, {
-    name: 'offset',
-    type: 'input',
-    props: {
-      label: '偏移'
-    },
-    default: 1,
-    dataType: 'number'
-  }]
+  props: {
+    type: 'object',
+    properties: {
+      span: {
+        title: '列宽',
+        type: 'number',
+        default: 12
+      },
+      offset: {
+        title: '偏移',
+        type: 'number',
+        default: 0
+      }
+    }
+  },
 })
 @canDropTo('row') // 列控件只可被拖入行控件内
 @canBeDroped('!col') // 不可拖入其他列控件

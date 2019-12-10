@@ -12,26 +12,36 @@ const { Option } = Select
   category: ElementCategory.FORM,
   type: 'select',
   icon: 'select',
-  props: [{
-    name: 'label',
-    type: 'input',
-    props: {
-      label: '标签文字',
-    },
-    default: '下拉框',
-  }, { // 右侧属性面板中可以编辑的属性列表
-    name: 'options',
-    type: 'list',
-    props: {
-      label: '选项列表'
-    },
-    default: [
-      { value: 0, label: '选项一' },
-      { value: 1, label: '选项二' },
-      { value: 2, label: '选项三' },
-    ],
-    dataType: 'string'
-  }]
+  props: {
+    type: 'object',
+    properties: {
+      label: {
+        title: '标签文字',
+        type: 'string',
+        default: '下拉框'
+      },
+      options: {
+        title: '选项列表',
+        type: 'array',
+        "ui:options": {
+          "foldable": true
+        },
+        items: {
+          type: 'object',
+          properties: {
+            label: {
+              type: 'string',
+              title: '选项说明'
+            },
+            value: {
+              type: 'string',
+              title: '选项值',
+            }
+          },
+        },
+      }
+    }
+  },
 })
 class InnerCls extends Element {
   @formControl
