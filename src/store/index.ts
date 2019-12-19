@@ -88,8 +88,10 @@ export class Store {
 
   constructor() {
     autorun(() => {
-      this.saveState()
+      this.records.add(this.jsonData)
 
+      this.canUndo = this.records.hasPrev()
+      this.canRedo = this.records.hasNext()
       triggerLayoutChange(120) // wait for animating
     }, {
       delay: 100
@@ -151,12 +153,12 @@ export class Store {
   }
 
   // 保存状态
-  @action saveState() {
-    this.records.add(this.jsonData)
+  // @action saveState() {
+  //   this.records.add(this.jsonData)
 
-    this.canUndo = this.records.hasPrev()
-    this.canRedo = this.records.hasNext()
-  }
+  //   this.canUndo = this.records.hasPrev()
+  //   this.canRedo = this.records.hasNext()
+  // }
 
   @action undo() {
     const val = this.records.prev()
